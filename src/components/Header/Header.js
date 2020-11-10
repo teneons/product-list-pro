@@ -30,9 +30,12 @@ export default class Header extends Component {
   addImg = (e) => {
     this.setState({img: e.target.value})
   }
-  
 
-
+  onSubmitProduct = (e) => {
+    e.preventDefault();
+    this.props.updateProductData([this.state.title, this.state.description, this.state.price, this.state.img, this.state.top])
+    this.setState({title: '', description: '', price: null, img: '', top: false})
+  }
 
   render() {
     const svgPlus = <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" className="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -59,12 +62,12 @@ export default class Header extends Component {
               </div>
               <div className="modal-body">
 
-                <form>
+                <form onSubmit={this.onSubmitProduct}>
                   <div>
-                    <input type="text" className="form-control mb-2" value={this.state.title} onChange={this.addTitle} placeholder="Product name" />
-                    <input type="text" className="form-control mb-2" value={this.state.description} onChange={this.addDescription} placeholder="Product description" />
-                    <input type="number" className="form-control mb-2" value={this.state.price} onChange={this.addPrice} placeholder="Product price" />
-                    <input type="text" className="form-control mb-2" value={this.state.img} onChange={this.addImg} placeholder="Product url img" />
+                    <input type="text" className="form-control mb-2" onChange={this.addTitle} placeholder="Product name" />
+                    <input type="text" className="form-control mb-2" onChange={this.addDescription} placeholder="Product description" />
+                    <input type="number" className="form-control mb-2" onChange={this.addPrice} placeholder="Product price" />
+                    <input type="text" className="form-control mb-2" onChange={this.addImg} placeholder="Product url img" />
                   </div>
                   <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-dark">{svgPlus}</button>
