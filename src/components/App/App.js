@@ -31,7 +31,6 @@ export default class App extends Component {
   }
 
   removeProduct = (id) => {
-    console.log(id)
     this.setState(({prodctData}) => {
       const findItem = prodctData.findIndex((idItem)=>idItem.id === id)
 
@@ -45,11 +44,29 @@ export default class App extends Component {
     })
   }
 
+  changeTopStatus = (id) => {
+    this.setState(({prodctData}) => {
+      const itemIndex = prodctData.findIndex((idItem) => idItem.id === id);
+      const findItem = prodctData.find((idItem) => idItem.id === id);
+  
+      const arrBeforeItem = prodctData.slice(0, itemIndex);
+      const arrAfterItem = prodctData.slice(itemIndex +1);
+      const newArrItems = [findItem, arrBeforeItem];
+      console.log(newArrItems)
+
+      return {
+        productData: newArrItems
+      }
+
+    })
+  }
+
   render() {
+    //console.log(this.state.prodctData)
     return (
       <div className="App">
         <Header updateProductData={this.updateProductData}/>
-        <MainContainer productData={this.state.prodctData} removeProduct={this.removeProduct}/>
+        <MainContainer productData={this.state.prodctData} removeProduct={this.removeProduct} changeTopStatus={this.changeTopStatus}/>
       </div>
     );
   }

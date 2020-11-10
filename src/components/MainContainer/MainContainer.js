@@ -4,10 +4,18 @@ import Card from '../Card/Card';
 export default class MainContainer extends Component {
 
   render() {
-    const {productData, removeProduct} = this.props;
+    const {productData, removeProduct, changeTopStatus} = this.props;
 
     const outCard = productData.map((item) => {
-      return(<Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} removeProduct={() => removeProduct(item.id)} />)
+      return(<Card id={item.id}
+        title={item.title} 
+        description={item.description}
+        price={item.price}
+        img={item.img}
+        top={item.top}
+        removeProduct={() => removeProduct(item.id)} 
+        changeTopStatus={() => changeTopStatus(item.id)}
+        />)
     })
 
     return(
@@ -19,3 +27,5 @@ export default class MainContainer extends Component {
     )
   }
 }
+
+//  changeTopStatus={() => changeTopStatus(item.id)}

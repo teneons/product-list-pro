@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import img from '../Header/logo.svg';
 
 export default class Card extends Component {
+
   render() {
     const svgTrash = <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" className="bi bi-trash2-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.037 3.225l1.684 10.104A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671l1.684-10.104C13.627 4.224 11.085 5 8 5c-3.086 0-5.627-.776-5.963-1.775z"/>
@@ -30,7 +31,7 @@ export default class Card extends Component {
           <div>
             <p className="card-text font-weight-bold float-left" style={{fontSize: '1.4rem'}}>{this.props.price} UAH</p>
             <button className="btn btn-outline-danger float-right mr-1" onClick={this.props.removeProduct}>{svgTrash}</button>
-            <button className="btn btn-outline-warning float-right mr-1">{outPinSvg}</button>
+            <button className="btn btn-outline-warning float-right mr-1" onClick={this.props.changeTopStatus}>{outPinSvg}</button>
           </div>
         </div>
       </div>
