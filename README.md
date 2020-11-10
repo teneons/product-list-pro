@@ -4,7 +4,7 @@
 
 
 + **Project name -** `Product list`
-+ **Description -** project based on NASA API.
++ **Description -** product list control system.
 + **How run :**
   - git clone https://github.com/teneons/product-list
   - npm install
