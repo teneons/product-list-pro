@@ -5,9 +5,10 @@ export default class MainContainer extends Component {
 
   render() {
     let data = this.props.productData;
+    console.log(data)
 
     const outCard = data.map((item) => {
-      <Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} />
+      return(<Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} />)
     })
 
     return(
