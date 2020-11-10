@@ -29,7 +29,7 @@ export default class Card extends Component {
           <p className="card-text">{this.props.description}</p>
           <div>
             <p className="card-text font-weight-bold float-left" style={{fontSize: '1.4rem'}}>{this.props.price} UAH</p>
-            <button className="btn btn-outline-danger float-right mr-1">{svgTrash}</button>
+            <button className="btn btn-outline-danger float-right mr-1" onClick={this.props.removeProduct}>{svgTrash}</button>
             <button className="btn btn-outline-warning float-right mr-1">{outPinSvg}</button>
           </div>
         </div>

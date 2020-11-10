@@ -15,22 +15,21 @@ export default class Header extends Component {
     }
   }
 
+  //add data to state
   addTitle = (e) => {
     this.setState({title: e.target.value})
   }
-
   addDescription = (e) => {
     this.setState({description: e.target.value})
   }
-
   addPrice = (e) => {
     this.setState({price: e.target.value})
   }
-
   addImg = (e) => {
     this.setState({img: e.target.value})
   }
 
+  //processing data
   onSubmitProduct = (e) => {
     e.preventDefault();
     const id = Math.random().toString(36).substr(2, 9)

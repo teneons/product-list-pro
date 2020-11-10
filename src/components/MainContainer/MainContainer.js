@@ -4,11 +4,10 @@ import Card from '../Card/Card';
 export default class MainContainer extends Component {
 
   render() {
-    let data = this.props.productData;
-    console.log(data)
+    const {productData, removeProduct} = this.props;
 
-    const outCard = data.map((item) => {
-      return(<Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} />)
+    const outCard = productData.map((item) => {
+      return(<Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} removeProduct={() => removeProduct(item.id)} />)
     })
 
     return(
