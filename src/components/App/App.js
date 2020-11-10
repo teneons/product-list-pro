@@ -7,16 +7,35 @@ export default class App extends Component {
     super(props)
   
     this.state = {
-       prodctData: null
+       prodctData: []
     }
   }
   
+  objProduct = (title, description, price, img, top) => {
+    return {
+      id: 1,
+      title,
+      description,
+      price,
+      img,
+      top
+    }
+  }
 
   updateProductData = (data) => {
-    this.setState({prodctData: data})
+
+    const itemProduct = this.objProduct(data);
+
+    this.setState(({prodctData}) => {
+      const arrProduct = [...prodctData, itemProduct]
+      return {
+        prodctData: arrProduct
+      }
+    })
   }
 
   render() {
+    console.log(this.state.prodctData)
     return (
       <div className="App">
         <Header updateProductData={this.updateProductData}/>

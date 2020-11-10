@@ -22,13 +22,13 @@ export default class Card extends Component {
     const outPinSvg = (statPin? svgPin : svgUnpin);
 
     return (
-      <div className="card col-5 col-sm-3 m-1" style={{width: '18rem'}}>
-        <img src={img} className="card-img-top rounded" alt="Product image"></img>
+      <div className="card col-5 col-sm-3 m-1" style={{width: '18rem'}} key={this.props.productData.id}>
+        <img src={this.props.productData.img} className="card-img-top rounded" alt="Product image"></img>
         <div className="card-body">
-          <h5 className="card-title">Product title</h5>
-          <p className="card-text">Product description</p>
+          <h5 className="card-title">{this.props.productData.title}</h5>
+          <p className="card-text">{this.props.productData.description}</p>
           <div>
-            <p className="card-text font-weight-bold float-left" style={{fontSize: '1.4rem'}}>100 UAH</p>
+            <p className="card-text font-weight-bold float-left" style={{fontSize: '1.4rem'}}>{this.props.productData.price} UAH</p>
             <button className="btn btn-outline-danger float-right mr-1">{svgTrash}</button>
             <button className="btn btn-outline-warning float-right mr-1">{outPinSvg}</button>
           </div>

@@ -33,8 +33,8 @@ export default class Header extends Component {
 
   onSubmitProduct = (e) => {
     e.preventDefault();
-    this.props.updateProductData([this.state.title, this.state.description, this.state.price, this.state.img, this.state.top])
-    this.setState({title: '', description: '', price: null, img: '', top: false})
+    this.props.updateProductData(this.state.title, this.state.description, this.state.price, this.state.img, this.state.top);
+    this.setState({title: '', description: '', price: null, img: '', top: false});
   }
 
   render() {
