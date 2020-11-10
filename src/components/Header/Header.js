@@ -9,7 +9,7 @@ export default class Header extends Component {
     this.state = {
        title: '',
        description: '',
-       price: null,
+       price: '',
        img: '',
        top: false
     }
@@ -33,8 +33,9 @@ export default class Header extends Component {
 
   onSubmitProduct = (e) => {
     e.preventDefault();
-    this.props.updateProductData(this.state.title, this.state.description, this.state.price, this.state.img, this.state.top);
-    this.setState({title: '', description: '', price: null, img: '', top: false});
+    const id = Math.random().toString(36).substr(2, 9)
+    this.props.updateProductData(id, this.state.title, this.state.description, this.state.price, this.state.img, this.state.top);
+    this.setState({title: '', description: '', price: '', img: '', top: false});
   }
 
   render() {
@@ -64,10 +65,10 @@ export default class Header extends Component {
 
                 <form onSubmit={this.onSubmitProduct}>
                   <div>
-                    <input type="text" className="form-control mb-2" onChange={this.addTitle} placeholder="Product name" />
-                    <input type="text" className="form-control mb-2" onChange={this.addDescription} placeholder="Product description" />
-                    <input type="number" className="form-control mb-2" onChange={this.addPrice} placeholder="Product price" />
-                    <input type="text" className="form-control mb-2" onChange={this.addImg} placeholder="Product url img" />
+                    <input type="text" className="form-control mb-2" onChange={this.addTitle} value={this.state.title} placeholder="Product name" />
+                    <input type="text" className="form-control mb-2" onChange={this.addDescription} value={this.state.description}  placeholder="Product description" />
+                    <input type="number" className="form-control mb-2" onChange={this.addPrice} value={this.state.price} placeholder="Product price" />
+                    <input type="text" className="form-control mb-2" onChange={this.addImg} value={this.state.img} placeholder="Product url img" />
                   </div>
                   <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-dark">{svgPlus}</button>

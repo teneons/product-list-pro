@@ -10,24 +10,20 @@ export default class App extends Component {
        prodctData: []
     }
   }
-  
-  objProduct = (title, description, price, img, top) => {
-    return {
-      id: 1,
-      title,
-      description,
-      price,
-      img,
-      top
+
+  updateProductData = (id, title, description, price, img, top) => {
+
+    let data = {
+      id: id,
+      title: title,
+      description: description,
+      price: price,
+      img: img,
+      top: top
     }
-  }
-
-  updateProductData = (data) => {
-
-    const itemProduct = this.objProduct(data);
 
     this.setState(({prodctData}) => {
-      const arrProduct = [...prodctData, itemProduct]
+      const arrProduct = [...prodctData, data]
       return {
         prodctData: arrProduct
       }
@@ -35,7 +31,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.prodctData)
     return (
       <div className="App">
         <Header updateProductData={this.updateProductData}/>

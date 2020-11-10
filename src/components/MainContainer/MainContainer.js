@@ -7,7 +7,7 @@ export default class MainContainer extends Component {
     let data = this.props.productData;
 
     const outCard = data.map((item) => {
-      <Card productData={item} />
+      <Card id={item.id} title={item.title} description={item.description} price={item.price} img={item.img} />
     })
 
     return(
