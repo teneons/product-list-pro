@@ -27,5 +27,3 @@ export default class MainContainer extends Component {
     )
   }
 }
-
-//  changeTopStatus={() => changeTopStatus(item.id)}

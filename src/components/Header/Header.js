@@ -4,39 +4,6 @@ import {connect} from 'react-redux';
 
 
 class Header extends Component {
-  // constructor(props) {
-  //   super(props)
-  
-  //   this.state = {
-  //      title: '',
-  //      description: '',
-  //      price: '',
-  //      img: '',
-  //      top: false
-  //   }
-  // }
-
-  // //add data to state
-  // addTitle = (e) => {
-  //   this.setState({title: e.target.value})
-  // }
-  // addDescription = (e) => {
-  //   this.setState({description: e.target.value})
-  // }
-  // addPrice = (e) => {
-  //   this.setState({price: e.target.value})
-  // }
-  // addImg = (e) => {
-  //   this.setState({img: e.target.value})
-  // }
-
-  // //processing data
-  // onSubmitProduct = (e) => {
-  //   e.preventDefault();
-  //   const id = Math.random().toString(36).substr(2, 9)
-  //   this.props.updateProductData(id, this.state.title, this.state.description, this.state.price, this.state.img, this.state.top);
-  //   this.setState({title: '', description: '', price: '', img: '', top: false});
-  // }
 
   allDataProduct() {
     this.props.headerAddData(Math.random().toString(36).substr(2, 9), this.txtTitle.value, this.txtDescription.value, this.txtPrice.value, this.txtImg.value, false)
@@ -57,7 +24,7 @@ class Header extends Component {
         <nav className="navbar navbar-light bg-dark d-flex justify-content-center">
           <span className="navbar-brand text-uppercase text-white font-weight-bold" href="#">
             <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="" loading="lazy"></img>
-          Product list
+          Product list <span className="badge bg-light text-dark">PRO</span>
       </span>
           <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
         </nav>
