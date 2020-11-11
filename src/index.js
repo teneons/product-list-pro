@@ -16,6 +16,8 @@ import {Provider} from 'react-redux';
       ]
     } else if (action.type === 'REMOVE_PRODUCT') {
       return state;
+    } else if(action.type === 'SEARCH_PRODUCT') {
+      return action.payload
     }
     return state
   }
@@ -28,8 +30,6 @@ import {Provider} from 'react-redux';
   //   console.log(`REDUX STORE: ${store.getState()}`)
   // })
 
-  //add item
-  //store.dispatch({type: 'ADD_PRODUCT', payload: ''})
 
 ReactDOM.render(
   <React.StrictMode>

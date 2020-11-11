@@ -12,6 +12,10 @@ class Header extends Component {
     this.txtPrice.value = ''
     this.txtImg.value = ''
   }
+
+  getSearchTxt() {
+    this.props.searchData(this.txtSearch.value)
+  }
   
   render() {
     const svgPlus = <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" className="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +37,7 @@ class Header extends Component {
           </span>
             <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
             <input type="text" className="ml-4" ref={(input) => this.txtSearch = input} placeholder="Search proructs" />
-            <button type="button" className="btn btn-light input-group-text">{svgSearch}</button>
+            <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light input-group-text">{svgSearch}</button>
         </nav>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +68,11 @@ class Header extends Component {
 }
 
 export default connect(state => ({}),
-  dispatch => ({headerAddData: (id, title, description, price, img, top) => {
+  dispatch => (
+    {headerAddData: (id, title, description, price, img, top) => {
       dispatch({type: 'ADD_PRODUCT', payload: {id: id, title: title, description: description, price: price, img: img, top: top}})
-  }})
-  )(Header);
+  }},
+    {searchData: (searchTxt)=>{
+      dispatch({type: 'SEARCH_PRODUCT', payload: searchTxt})
+  }}
+  ))(Header);
