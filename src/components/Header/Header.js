@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import {connect} from 'react-redux';
 
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
   
@@ -83,3 +84,8 @@ export default class Header extends Component {
     )
   }
 }
+
+export default connect(state => ({}),
+  dispatch => ({headerAddData: (this.state.id, this.state.title, this.state.description, this.state.price, this.state.img, this.state.top) => {
+    dispatch({type: 'ADD_PRODUCT', payload: ''})
+  }))(Header);
