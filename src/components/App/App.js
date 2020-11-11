@@ -1,6 +1,30 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import MainContainer from '../MainContainer/MainContainer';
+import {createStore} from 'redux';
+
+//func handler
+function productArr(state = [], action) {
+  if(action.type === 'ADD_PRODUCT') {
+    return[
+      ...state, action.payload
+    ]
+  }
+  return state
+}
+
+//create store
+const store = createStore(productArr);
+//out action
+store.subscribe(() => {
+  console.log(`REDUX STORE: ${store.getState()}`)
+})
+
+//add item
+store.dispatch({type: 'ADD_PRODUCT', payload: 'product 1'})
+store.dispatch({type: 'ADD_PRODUCT', payload: 'product 2'})
+
+
 
 export default class App extends Component {
   constructor(props) {
