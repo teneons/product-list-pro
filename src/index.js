@@ -6,7 +6,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 
-  const initState = [{id: 123, title: 'Product 1', description: 'asdadadasdd', price: '1010', img: 'img', top: false}, 'n2']
+  const initState = []
 
   //func handler
   function productArr(state = initState, action) {
@@ -27,7 +27,7 @@ import {Provider} from 'react-redux';
   })
 
   //add item
-  store.dispatch({type: 'ADD_PRODUCT', payload: ''})
+  //store.dispatch({type: 'ADD_PRODUCT', payload: ''})
 
 ReactDOM.render(
   <React.StrictMode>
