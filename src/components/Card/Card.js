@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import img from '../Header/logo.svg';
 
-export default class Card extends Component {
+class Card extends Component {
+
+  removeItem() {
+    this.props.cardRemove(this.idItem.value)
+  }
 
   render() {
     const svgTrash = <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" className="bi bi-trash2-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -24,12 +29,13 @@ export default class Card extends Component {
     return (
       <div className="card col-5 col-sm-3 m-1" style={{width: '18rem'}} key={this.props.id}>
         <img src={this.props.img} className="card-img-top rounded" alt="Product image"></img>
+        <input type='hidden' ref={(input) => this.idItem = input} value={this.props.id}/>
         <div className="card-body">
           <h5 className="card-title">{this.props.title}</h5>
           <p className="card-text">{this.props.description}</p>
           <div>
             <p className="card-text font-weight-bold float-left" style={{fontSize: '1.4rem'}}>{this.props.price} UAH</p>
-            <button className="btn btn-outline-danger float-right mr-1">{svgTrash}</button>
+            <button className="btn btn-outline-danger float-right mr-1" onClick={this.removeItem.bind(this)}>{svgTrash}</button>
             <button className="btn btn-outline-warning float-right mr-1">{outPinSvg}</button>
           </div>
         </div>
@@ -37,3 +43,12 @@ export default class Card extends Component {
     )
   }
 }
+
+export default connect(
+  state => ({}),
+  dispatch => ({
+    cardRemove: (id) => {
+      dispatch({type: 'REMOVE_PRODUCT', payload: id})
+    }
+  })
+  )(Card);
