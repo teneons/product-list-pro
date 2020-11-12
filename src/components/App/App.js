@@ -6,14 +6,13 @@ import {connect} from 'react-redux';
 class App extends Component {
 
   render() {
-    console.log(this.props.testStore)
     return (
       <div className="App">
         <Header/>
-        <MainContainer productData={this.props.testStore} />
+        <MainContainer productData={this.props.products} />
       </div>
     );
   }
 }
 
-export default connect(state => ({testStore: state}))(App);
+export default connect(state => ({products: state.products}))(App);
