@@ -67,8 +67,9 @@ class Header extends Component {
   }
 }
 
-export default connect(state => ({
-  products: state.products.filter(product => product.title.includes(state))
+export default connect(
+  state => ({
+    products: state.products.filter(product => product.title.includes(state.filterProducts))
   }),
   dispatch => ({
     headerAddData: (id, title, description, price, img, top) => {
@@ -76,5 +77,6 @@ export default connect(state => ({
   },
     searchData: (searchTxt)=>{
       dispatch({type: 'SEARCH_PRODUCT', payload: searchTxt})
-  }}
-  ))(Header);
+    }
+  })
+  )(Header);
