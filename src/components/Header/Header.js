@@ -36,7 +36,7 @@ class Header extends Component {
             Product list <span className="badge bg-light text-dark">PRO</span>
           </span>
             <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
-            <input type="text" className="ml-4" ref={(input) => this.txtSearch = input} placeholder="Search proructs" />
+            <input type="text" className="ml-4" ref={(input) => this.txtSearch = input} placeholder="Search product" />
             <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light input-group-text">{svgSearch}</button>
         </nav>
 
