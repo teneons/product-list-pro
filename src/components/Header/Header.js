@@ -68,9 +68,7 @@ class Header extends Component {
 }
 
 export default connect(
-  state => ({
-    products: state.products.filter(product => product.title.includes(state.filterProducts))
-  }),
+  state => ({}),
   dispatch => ({
     headerAddData: (id, title, description, price, img, top) => {
       dispatch({type: 'ADD_PRODUCT', payload: {id: id, title: title, description: description, price: price, img: img, top: top}})
