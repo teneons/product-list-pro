@@ -49,13 +49,13 @@ class Header extends Component {
               </div>
               <div className="modal-body">
                   <div>
-                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtTitle = input} placeholder="Product name" />
-                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtDescription = input}  placeholder="Product description" />
-                    <input type="number" className="form-control mb-2" ref={(input)=> this.txtPrice = input} placeholder="Product price" />
-                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtImg = input} placeholder="Product url img" />
-                  </div>
-                  <div className="d-flex justify-content-center">
-                    <button type="button" onClick={this.allDataProduct.bind(this)} className="btn btn-dark">{svgPlus}</button>
+                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtTitle = input} placeholder="Product name" required/>
+                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtDescription = input}  placeholder="Product description" required />
+                    <input type="number" className="form-control mb-2" ref={(input)=> this.txtPrice = input} placeholder="Product price" required/>
+                    <input type="text" className="form-control mb-2" ref={(input)=> this.txtImg = input} placeholder="Product url img" required/>
+                    <div className="d-flex justify-content-center">
+                      <button type="button" onClick={this.allDataProduct.bind(this)} className="btn btn-dark">{svgPlus}</button>
+                    </div>
                   </div>
               </div>
             </div>
