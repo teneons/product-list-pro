@@ -53,7 +53,7 @@ class Header extends Component {
           <div className="d-flex justify-content-center col-12 col-md-8 col-lg-5">
           <div className="collapse navbar navbar-collapse" id="navbarNav">
             <div className="d-flex justify-content-center align-items-center row">
-              <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
+              <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#staticBackdrop">{svgPlus}</button>
               <div className="d-flex align-items-center ml-2">
                 <input type="text" className="form-control mr-1" ref={(input) => this.txtSearch = input} placeholder="Search product" />
                 <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
@@ -64,12 +64,12 @@ class Header extends Component {
 
         </nav>
 
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
+        <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Add new product</h5>
-                <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div className="modal-body">
                   <div>
@@ -78,7 +78,7 @@ class Header extends Component {
                     <input type="number" className="form-control mb-2" ref={(input)=> this.txtPrice = input} placeholder="Product price" required/>
                     <input type="text" className="form-control mb-2" ref={(input)=> this.txtImg = input} placeholder="Product url img" required/>
                     <div className="d-flex justify-content-center">
-                      <button type="button" onClick={this.allDataProduct.bind(this)} className="btn btn-dark">{svgPlus}</button>
+                      <button type="button" onClick={this.allDataProduct.bind(this)} className="btn btn-dark">Add {svgPlus}</button>
                     </div>
                   </div>
               </div>
