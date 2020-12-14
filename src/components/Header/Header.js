@@ -33,16 +33,35 @@ class Header extends Component {
       <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
     </svg>
 
+    const svgToggler = <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" fill="currentColor" className="bi bi-bookshelf" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
+    </svg>
+
     return (
       <div>
-        <nav className="navbar navbar-light bg-dark d-flex justify-content-center">
+        <nav className="d-flex justify-content-center navbar navbar-expand-lg bg-dark">
+
           <span className="navbar-brand text-uppercase text-white font-weight-bold" href="#">
-            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="" loading="lazy"></img>
+            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
             Product list <span className="badge bg-light text-dark">PRO</span>
           </span>
-            <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
-            <input type="text" className="ml-4" ref={(input) => this.txtSearch = input} placeholder="Search product" />
-            <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light input-group-text">{svgSearch}</button>
+
+          <button className="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span>{svgToggler}</span>
+          </button>
+
+          <div className="d-flex justify-content-center col-12 col-md-8 col-lg-5">
+          <div className="collapse navbar navbar-collapse" id="navbarNav">
+            <div className="d-flex justify-content-center align-items-center row">
+              <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#exampleModal">{svgPlus}</button>
+              <div className="d-flex align-items-center ml-2">
+                <input type="text" className="form-control mr-1" ref={(input) => this.txtSearch = input} placeholder="Search product" />
+                <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
+              </div>
+            </div>
+          </div>
+          </div>
+
         </nav>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
