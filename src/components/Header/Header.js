@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
@@ -41,26 +39,26 @@ class Header extends Component {
       <div>
         <nav className="d-flex justify-content-center navbar navbar-expand-lg bg-dark">
 
-          <span className="navbar-brand text-uppercase text-white font-weight-bold" href="#">
-            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
-            Product list <span className="badge bg-light text-dark">PRO</span>
-          </span>
+            <span className="navbar-brand text-uppercase text-white fw-bold" href="#">
+              <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
+              Product list <span className="badge bg-light text-dark">PRO</span>
+            </span>
 
-          <button className="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span>{svgToggler}</span>
-          </button>
+            <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span>{svgToggler}</span>
+            </button>
 
-          <div className="d-flex justify-content-center col-12 col-md-8 col-lg-5">
-          <div className="collapse navbar navbar-collapse" id="navbarNav">
-            <div className="d-flex justify-content-center align-items-center row">
-              <button type="button" className="btn btn-light ml-5" data-toggle="modal" data-target="#staticBackdrop">{svgPlus}</button>
-              <div className="d-flex align-items-center ml-2">
-                <input type="text" className="form-control mr-1" ref={(input) => this.txtSearch = input} placeholder="Search product" />
-                <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
+            <div className="col-12 col-md-8 col-lg-4 d-flex justify-content-center">
+            <div className="collapse navbar-collapse" id="navbarcollapse">
+              <div className="d-flex justify-content-around container">
+                <button type="button" className="btn btn-light" data-toggle="modal" data-target="#staticBackdrop">{svgPlus}</button>
+                <div className="d-flex align-items-center">
+                  <input type="search" className="form-control mr-1" ref={(input) => this.txtSearch = input} placeholder="Search product" aria-label="Search" />
+                  <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
+            </div>
 
         </nav>
 
@@ -69,7 +67,7 @@ class Header extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Add new product</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
                   <div>
