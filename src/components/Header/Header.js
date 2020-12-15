@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-
-
 class Header extends Component {
 
   allDataProduct() {
@@ -51,7 +49,7 @@ class Header extends Component {
             <div className="col-12 col-md-8 col-lg-4 d-flex justify-content-center">
             <div className="collapse navbar-collapse" id="navbarcollapse">
               <div className="d-flex justify-content-around container">
-                <button type="button" className="btn btn-light" data-toggle="modal" data-target="#staticBackdrop">{svgPlus}</button>
+                <button type="button" className="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{svgPlus}</button>
                 <div className="d-flex align-items-center">
                   <input type="search" className="form-control mr-1" ref={(input) => this.txtSearch = input} placeholder="Search product" aria-label="Search" />
                   <button type="button" onClick={this.getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
@@ -62,7 +60,7 @@ class Header extends Component {
 
         </nav>
 
-        <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
@@ -83,6 +81,7 @@ class Header extends Component {
             </div>
           </div>
         </div>
+        
       </div>
 
     )
