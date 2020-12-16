@@ -13,11 +13,14 @@ const Header = () => {
   }
 
   const setToRedux = () => {
-    this.headerAddData(inputProduct)
+    headerAddData(inputProduct) //!!
   }
 
-  const getSearchTxt = () => {
-    //this.props.searchData(this.txtSearch.value)
+  //search processing
+  const [searchTxt, setSearchTxt] = useState(null)
+
+  const searchProduct = () => {
+    searchData(searchTxt)   //!!
   }
   
   //svg
@@ -35,7 +38,6 @@ const Header = () => {
     <path fillRule="evenodd" d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
   </svg>
 
-console.log(inputProduct)
     return (
       <div>
         <nav className="d-flex justify-content-center navbar navbar-expand-lg bg-dark">
@@ -53,10 +55,12 @@ console.log(inputProduct)
             <div className="collapse navbar-collapse" id="navbarcollapse">
               <div className="d-flex justify-content-around container">
                 <button type="button" className="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{svgPlus}</button>
+                
                 <div className="d-flex align-items-center">
-                  <input type="search" className="form-control mr-1" placeholder="Search product" aria-label="Search" />
-                  <button type="button" onClick={getSearchTxt.bind(this)} className="btn btn-light">{svgSearch}</button>
+                  <input type="search" className="form-control mr-1" onChange={e => setSearchTxt(e.target.value)} name='search' placeholder="Search product" aria-label="Search" />
+                  <button type="button" onClick={searchProduct} className="btn btn-light">{svgSearch}</button>
                 </div>
+
               </div>
             </div>
             </div>
