@@ -3,26 +3,19 @@ import logo from './logo.svg';
 import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import {add_product, search_product} from '../../reducers/actions';
 
 
-const Header = () => {
+const Header = ({add_product, search_product}) => {
 
   //add new product
-  const [inputProduct, setProductData] = useState({name: '', description: '', price: '', img: ''})
+  const [productData, setProductData] = useState({title: '', description: '', price: '', img: ''})
   const getNewProd = e => {
-    setProductData({...inputProduct, [e.target.name]: e.target.value})
+    setProductData({...productData, [e.target.name]: e.target.value})
   }
 
-  const setToRedux = () => {
-    headerAddData(inputProduct) //!!
-  }
-
-  //search processing
+  //search
   const [searchTxt, setSearchTxt] = useState(null)
-
-  const searchProduct = () => {
-    searchData(searchTxt)   //!!
-  }
   
   //svg
   const svgPlus = <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" className="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +52,7 @@ const Header = () => {
                 
                 <div className="d-flex align-items-center">
                   <input type="search" className="form-control mr-1" onChange={e => setSearchTxt(e.target.value)} name='search' placeholder="Search product" aria-label="Search" />
-                  <button type="button" onClick={searchProduct} className="btn btn-light">{svgSearch}</button>
+                  <button type="button" onClick={search_product(searchTxt)} className="btn btn-light">{svgSearch}</button>
                 </div>
 
               </div>
@@ -77,12 +70,12 @@ const Header = () => {
               </div>
               <div className="modal-body">
                   <div>
-                    <input type="text" className="form-control mb-2" onChange={getNewProd} name='name' placeholder="Product name" required/>
+                    <input type="text" className="form-control mb-2" onChange={getNewProd} name='title' placeholder="Product name" required/>
                     <input type="text" className="form-control mb-2" onChange={getNewProd} name='description' placeholder="Product description" required />
                     <input type="number" className="form-control mb-2" onChange={getNewProd} name='price' placeholder="Product price" required/>
                     <input type="text" className="form-control mb-2" onChange={getNewProd} name='img' placeholder="Product url img" required/>
                     <div className="d-flex justify-content-center">
-                      <button type="button" onClick={setToRedux} className="btn btn-dark">Add {svgPlus}</button>
+                      <button type="button" onClick={add_product(productData)} className="btn btn-dark">Add {svgPlus}</button>
                     </div>
                   </div>
               </div>
@@ -94,16 +87,19 @@ const Header = () => {
   )
 }
 
-const headerAddData = (id = Math.random().toString(36).substr(2, 9), title, description, price, img) => {
-  dispatch({type: 'ADD_PRODUCT', payload: {id: id, title: title, description: description, price: price, img: img}})
+// //move to MainContainer
+// const mapStateToProps = (state) => {
+//   return {
+//     product: state
+//   }
+// }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add_product: () => dispatch(add_product({id: (Math.random().toString(36).substr(2, 9)), title: title, description: description, price: price, img: img})),
+    search_product: () => dispatch(search_product(searchTxt))
+  }
 }
 
-const searchData = (searchTxt) => {
-  dispatch({type: 'SEARCH_PRODUCT', payload: searchTxt})
-}
 
-
-export default connect(
-  state => ({}),
-  dispatch => ({ headerAddData, searchData})
-)(Header);
+export default connect(mapDispatchToProps)(Header);
