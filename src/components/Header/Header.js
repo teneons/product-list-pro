@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
 const Header = () => {
 
   //add new product
@@ -93,14 +94,16 @@ const Header = () => {
   )
 }
 
+const headerAddData = (id = Math.random().toString(36).substr(2, 9), title, description, price, img) => {
+  dispatch({type: 'ADD_PRODUCT', payload: {id: id, title: title, description: description, price: price, img: img}})
+}
+
+const searchData = (searchTxt) => {
+  dispatch({type: 'SEARCH_PRODUCT', payload: searchTxt})
+}
+
+
 export default connect(
   state => ({}),
-  dispatch => ({
-    headerAddData: (id = Math.random().toString(36).substr(2, 9), title, description, price, img) => {
-      dispatch({type: 'ADD_PRODUCT', payload: {id: id, title: title, description: description, price: price, img: img}})
-  },
-    searchData: (searchTxt)=>{
-      dispatch({type: 'SEARCH_PRODUCT', payload: searchTxt})
-    }
-  })
-  )(Header);
+  dispatch => ({ headerAddData, searchData})
+)(Header);
