@@ -11,21 +11,26 @@ class Header extends Component {
     super(props)
   
     this.state = {
-      id: Math.random().toString(36).substr(2, 9),
       title: null,
       description: null,
       price: null,
-      img: null,
+      image: null,
       search: null
     }
   }
 
-  addProduct = {
-
+  addProduct () {
+    //new product data to in a sigle obj
+    const newProduct = {id: Math.random().toString(36).substr(2, 9), title: this.state.title, description: this.state.description, price: this.state.price, image: this.state.image}
+    
+    add_product(newProduct) //pass obj to actions
+    this.setState({title: null, description: null, price: null, image: null}) //cleaning state
   }
 
   searchProduct () {
+    search_product({search: this.state.search}) //pass obj to actions
 
+    this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
   }
 
   
@@ -87,7 +92,7 @@ class Header extends Component {
                     <input type="text" className="form-control mb-2" onChange={e => this.setState({title: e.target.value})} name='title' placeholder="Product name" required/>
                     <input type="text" className="form-control mb-2" onChange={e => this.setState({description: e.target.value})} name='description' placeholder="Product description" required />
                     <input type="number" className="form-control mb-2" onChange={e => this.setState({price: e.target.value})} name='price' placeholder="Product price" required/>
-                    <input type="text" className="form-control mb-2" onChange={e => this.setState({img: e.target.value})} name='img' placeholder="Product url img" required/>
+                    <input type="text" className="form-control mb-2" onChange={e => this.setState({image: e.target.value})} name='img' placeholder="Product url img" required/>
                     <div className="d-flex justify-content-center">
                       <button type="button" onClick={() => this.addProduct()} className="btn btn-dark">Add {svgPlus}</button>
                     </div>
@@ -111,8 +116,8 @@ class Header extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add_product: (data) => dispatch(add_product(data)),
-    search_product: (data) => dispatch(search_product(data))
+    add_product: () => dispatch(add_product()),
+    search_product: () => dispatch(search_product())
   }
 }
 
