@@ -57,7 +57,7 @@ class Header extends Component {
 
             <span className="navbar-brand text-uppercase text-white fw-bold" href="#">
               <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
-              Product list <span className="badge bg-light text-dark">PRO</span>
+              Products
             </span>
 
             <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation">
