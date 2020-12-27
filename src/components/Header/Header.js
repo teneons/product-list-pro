@@ -23,12 +23,12 @@ class Header extends Component {
     //new product data to in a sigle obj
     const newProduct = {id: Math.random().toString(36).substr(2, 9), title: this.state.title, description: this.state.description, price: this.state.price, image: this.state.image}
     
-    add_product(newProduct) //pass obj to actions
+    this.props.addProd(newProduct) //pass obj to actions
     this.setState({title: null, description: null, price: null, image: null}) //cleaning state
   }
 
   searchProduct () {
-    search_product({search: this.state.search}) //pass obj to actions
+    this.props.searchProd({search: this.state.search}) //pass obj to actions
 
     this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
   }
@@ -107,19 +107,12 @@ class Header extends Component {
 }
 }
 
-// //move to MainContainer
-// const mapStateToProps = (state) => {
-//   return {
-//     product: state
-//   }
-// }
-
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    add_product: () => dispatch(add_product()),
-    search_product: () => dispatch(search_product())
+    addProd: (data) => dispatch(add_product(data)),
+    searchProd: (data) => dispatch(search_product(data))
   }
 }
 
 
-export default connect(mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);
