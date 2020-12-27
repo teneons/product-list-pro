@@ -22,27 +22,37 @@ class MainContainer extends Component {
       <path d="M8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" />
     </svg>
 
+    //check && out data
+    let outContent;
+
+    //checks at empty
+    if(this.props.productState.length === 0) {
+      outContent = <span className='display-4 fw-bold'>No products yet. Please, adds them</span>
+    } else {
+      outContent = this.props.productState.map((item) =>
+        <div className='d-flex justify-content-around row row-cols-3 col-12 col-sm-10 bg-warning' style={{position: 'absolute'}}>
+          <div className="card col-5 col-sm-3 m-1 shadow" style={{ width: '18rem' }} key={item.id}>
+            <img src={item.img} className="card-img-top rounded" alt="Product"></img>
+            <div className="card-body">
+
+              <h5 className="card-title">{item.title}</h5>
+              <p className="card-text">{item.description}</p>
+              <p className="card-text font-weight-bold float-left" style={{ fontSize: '1.4rem' }}>{item.price} UAH</p>
+
+              <div className='btn-group d-flex justify-content-center' role='group'>
+                <button className="btn btn-outline-danger float-right" onClick={() => this.removeItem(item.id)}>{svgTrash}</button>
+                <button className="btn btn-outline-warning float-right">{svgPin}</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className='container-flued d-flex justify-content-center pt-4 bg-light' style={{height: 'calc(100vh - 3.813em)'}} >
-        <div className='d-flex justify-content-around row row-cols-3 col-12 col-sm-10' style={{position: 'absolute'}}>
-          {this.props.productState.map((item) =>
-            <div className="card col-5 col-sm-3 m-1 shadow" style={{ width: '18rem' }} key={item.id}>
-              <img src={item.img} className="card-img-top rounded" alt="Product"></img>
-              <div className="card-body">
-                
-                <h5 className="card-title">{item.title}</h5>
-                <p className="card-text">{item.description}</p>
-                <p className="card-text font-weight-bold float-left" style={{ fontSize: '1.4rem' }}>{item.price} UAH</p>
-
-                <div className='btn-group d-flex justify-content-center' role='group'>
-                  <button className="btn btn-outline-danger float-right" onClick={() => this.removeItem(item.id)}>{svgTrash}</button>
-                  <button className="btn btn-outline-warning float-right">{svgPin}</button>
-                </div>
-
-              </div>
-            </div>
-          )}
-       </div>
+        {outContent}
       </div>
     )
   }
