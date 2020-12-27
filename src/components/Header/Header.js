@@ -53,29 +53,26 @@ class Header extends Component {
 
     return (
       <div>
-        <nav className="d-flex justify-content-center navbar navbar-expand-lg bg-dark">
+        <nav className="d-flex justify-content-around navbar navbar-expand-lg bg-dark">
 
             <span className="navbar-brand text-uppercase text-white fw-bold" href="#">
               <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
               Products
             </span>
 
+            <button type="button" className="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{svgPlus}</button>
+
             <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span>{svgToggler}</span>
             </button>
 
-            <div className="col-12 col-md-8 col-lg-4 d-flex justify-content-center">
-            <div className="collapse navbar-collapse" id="navbarcollapse">
-              <div className="d-flex justify-content-around container">
-                <button type="button" className="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{svgPlus}</button>
-                
-                <div className="d-flex align-items-center">
-                  <input type="search" className="form-control mr-1" onChange={e => this.setState({search: e.target.value})} name='search' placeholder="Search product" aria-label="Search" />
-                  <button type="button" onClick={() => this.searchProduct()} className="btn btn-light">{svgSearch}</button>
-                </div>
-
+            <div className="col-12 col-md-7 col-lg-3">
+              <div className="collapse navbar-collapse" id="navbarcollapse">
+                  <div className='input-group'>
+                    <input type="search" className="form-control" onChange={e => this.setState({search: e.target.value})} name='search' placeholder="Search product" aria-label="Search" />
+                    <button type="button" onClick={() => this.searchProduct()} className="btn btn-outline-light">{svgSearch}</button>
+                  </div>
               </div>
-            </div>
             </div>
 
         </nav>
