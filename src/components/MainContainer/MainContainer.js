@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import {remove_product} from '../../reducers/actions';
 
 
 class MainContainer extends Component {
 
   removeItem(id) {
-    this.props.cardRemove(id)
+    this.props.removeProd(id)
   }
 
   render() {
@@ -43,13 +44,16 @@ class MainContainer extends Component {
   }
 }
 
-export default connect(
-  state => ({
+const mapStateToProps = state => {
+  return {
     productState: state
-  }),
-  dispatch => ({
-    cardRemove: (id) => {
-      dispatch({ type: 'REMOVE_PRODUCT', payload: id })
-    }
-  })
-)(MainContainer)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return{
+    removeProd: (data) => dispatch(remove_product(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer)
