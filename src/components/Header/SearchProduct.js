@@ -1,6 +1,21 @@
 import React, { Component} from 'react';
+import {connect} from 'react-redux';
+import {search_product} from '../../reducers/actions';
 
-export default class SearchProduct extends Component {
+class SearchProduct extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      search: null
+    }
+  }
+
+  searchProduct () {
+    this.props.searchProd({search: this.state.search}) //pass obj to actions
+
+    this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
+  }
 
   render() {
     const svgSearch = <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" className="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -16,3 +31,11 @@ export default class SearchProduct extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    searchProd: (data) => dispatch(search_product(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SearchProduct);

@@ -3,26 +3,11 @@ import logo from './logo.svg';
 import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import {search_product} from '../../reducers/actions';
 import AddProduct from './AddProduct';
 import SearchProduct from './SearchProduct';
 
 
-class Header extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      search: null
-    }
-  }
-
-  searchProduct () {
-    this.props.searchProd({search: this.state.search}) //pass obj to actions
-
-    this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
-  }
-
+export default class Header extends Component {
 
   render() {
 
@@ -59,12 +44,3 @@ class Header extends Component {
   )
 }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    searchProd: (data) => dispatch(search_product(data))
-  }
-}
-
-
-export default connect(null, mapDispatchToProps)(Header);
