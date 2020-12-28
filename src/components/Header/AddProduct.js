@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {add_product, search_product} from '../../reducers/actions';
 
-export default class AddProduct extends Component {
+class AddProduct extends Component {
   constructor(props) {
     super(props)
   
@@ -10,6 +12,14 @@ export default class AddProduct extends Component {
       price: '',
       image: ''
     }
+  }
+
+  addProduct () {
+    //new product data to in a sigle obj
+    const newProduct = {id: Math.random().toString(36).substr(2, 9), title: this.state.title, description: this.state.description, price: this.state.price, image: this.state.image}
+    
+    this.props.addProd(newProduct) //pass obj to actions
+    this.setState({title: '', description: '', price: '', image: ''}) //cleaning state
   }
 
   render() {
@@ -48,3 +58,11 @@ export default class AddProduct extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addProd: (data) => dispatch(add_product(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddProduct);

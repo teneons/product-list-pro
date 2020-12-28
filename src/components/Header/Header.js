@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import {add_product, search_product} from '../../reducers/actions';
+import {search_product} from '../../reducers/actions';
 import AddProduct from './AddProduct';
 
 
@@ -16,21 +16,12 @@ class Header extends Component {
     }
   }
 
-  addProduct () {
-    //new product data to in a sigle obj
-    const newProduct = {id: Math.random().toString(36).substr(2, 9), title: this.state.title, description: this.state.description, price: this.state.price, image: this.state.image}
-    
-    this.props.addProd(newProduct) //pass obj to actions
-    this.setState({title: '', description: '', price: '', image: ''}) //cleaning state
-  }
-
   searchProduct () {
     this.props.searchProd({search: this.state.search}) //pass obj to actions
 
     this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
   }
 
-  
 
   render() {
     //svg
@@ -79,7 +70,6 @@ class Header extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addProd: (data) => dispatch(add_product(data)),
     searchProd: (data) => dispatch(search_product(data))
   }
 }
