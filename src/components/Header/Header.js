@@ -20,27 +20,32 @@ export default class Header extends Component {
             Products
           </span>
 
-          <div className='d-flex justify-content-around col-sm-12 col-md-9 col-lg7 row-sm'>
-            <div>
-                
-              <SearchProduct />
-              <AddProduct />
+          <div className='d-flex justify-content-around col-sm-12 col-md-9 col-lg-7'>
 
-              <div className="dropdown">
-                <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  Name Name
-                </button>
-                <ul className="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="dropdownMenuButton">
-                  <li><a className="dropdown-item" href="#">Account</a></li>
-                  <li><a className="dropdown-item disabled" href="#">Sign out</a></li>
-                </ul>
+              <div className='row'>
+                <SearchProduct />
               </div>
 
-            </div>
+              <div className='row'>
+                <AddProduct />
+              </div>
+
+              <div className='row'>
+                <div className="dropdown">
+                  <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Name Name
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="dropdownMenuButton">
+                    <li><a className="dropdown-item" href="#">Account</a></li>
+                    <li><a className="dropdown-item disabled" href="#">Sign out</a></li>
+                  </ul>
+                </div>
+              </div>
+
           </div>
 
         </nav>
       </div>
-  )
-}
+    )
+  }
 }
