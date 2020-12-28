@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component} from 'react';
 import logo from './logo.svg';
 import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -53,27 +53,31 @@ class Header extends Component {
 
     return (
       <div>
-        <nav className="d-flex justify-content-around navbar navbar-expand-lg bg-dark">
+        <nav className="d-flex justify-content-center navbar navbar-expand-lg bg-dark">
 
-            <span className="navbar-brand text-uppercase text-white fw-bold" href="#">
-              <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
-              Products
-            </span>
+          <span className="navbar-brand text-uppercase text-white fw-bold" href="#">
+            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="Logo" loading="lazy"></img>
+            Products
+          </span>
+
+          <div className='d-flex justify-content-around col-sm-12 col-md-9 col-lg7 row-sm'>
+            <div>
+            <div className='input-group'>
+              <input type="search" className="form-control" onChange={e => this.setState({search: e.target.value})} name='search' placeholder="Search product" aria-label="Search" />
+              <button type="button" onClick={() => this.searchProduct()} className="btn btn-outline-light">{svgSearch}</button>
+            </div>
+            </div>
 
             <button type="button" className="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{svgPlus}</button>
 
-            <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span>{svgToggler}</span>
-            </button>
-
-            <div className="col-12 col-md-7 col-lg-3">
-              <div className="collapse navbar-collapse" id="navbarcollapse">
-                  <div className='input-group'>
-                    <input type="search" className="form-control" onChange={e => this.setState({search: e.target.value})} name='search' placeholder="Search product" aria-label="Search" />
-                    <button type="button" onClick={() => this.searchProduct()} className="btn btn-outline-light">{svgSearch}</button>
-                  </div>
-              </div>
+            <div className="dropdown">
+              <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Dropdown button</button>
+              <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <li><a className="dropdown-item active" href="#">Action</a></li>
+                <li><a className="dropdown-item" href="#">Another action</a></li>
+              </ul>
             </div>
+          </div>
 
         </nav>
 
