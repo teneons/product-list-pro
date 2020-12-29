@@ -27,7 +27,7 @@ class MainContainer extends Component {
 
     //checks at empty
     if(this.props.productState.length === 0) {
-      outContent = <span className='display-6 text-center fw-bold f-gray'>No products yet. Please, adds them.</span>
+      outContent = <h1 className='text-center fw-bold f-gray'>No products yet. Please, adds them.</h1>
     } else {
       outContent = this.props.productState.map((item) =>
         <div className="card col-5 col-sm-3 m-1 shadow" style={{ width: '18rem' }} key={item.id}>
@@ -50,7 +50,7 @@ class MainContainer extends Component {
 
     return (
       <div className='container-flued d-flex justify-content-center pt-4 bg-light' style={{height: 'calc(100vh - 3.813em)'}} >
-        <div className='d-flex justify-content-around row row-cols-3 col-12 col-sm-10' style={{position: 'absolute'}}>
+        <div className='d-flex justify-content-around row row-col-3 col-11 col-md-10 col-lg-9' style={{position: 'absolute'}}>
           {outContent}
         </div>
       </div>
