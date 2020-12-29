@@ -20,17 +20,17 @@ export default class Header extends Component {
             Products
           </span>
 
-          <div className='d-flex justify-content-around col-sm-12 col-md-9 col-lg-7'>
+          <div className='d-flex justify-content-around align-items-center flex-column flex-md-row col-sm-12 col-md-9 col-lg-7'>
 
-              <div className='row'>
+              <div className='row mb-1'>
                 <SearchProduct />
               </div>
 
-              <div className='row'>
+              <div className='row mb-1'>
                 <AddProduct />
               </div>
 
-              <div className='row'>
+              <div className='row mb-1'>
                 <div className="dropdown">
                   <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Name Name
