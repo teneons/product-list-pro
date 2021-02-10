@@ -12,7 +12,7 @@ class SearchProduct extends Component {
   }
 
   searchProduct () {
-    this.props.searchProd({search: this.state.search}) //pass obj to actions
+    this.props.searchProd(this.state.search) //pass obj to actions
 
     this.setState(this.state.search = null) //cleaning state (yes, not here destructuring)
   }
